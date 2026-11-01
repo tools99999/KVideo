@@ -29,6 +29,7 @@ export const MovieCard = memo(function MovieCard({ movie, onMovieClick }: MovieC
   return (
     <Link
       href={`/?q=${encodeURIComponent(movie.title)}`}
+      prefetch={false}
       onClick={(e) => {
         // Allow default behavior for modifier keys (new tab, etc.)
         if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
@@ -55,7 +56,7 @@ export const MovieCard = memo(function MovieCard({ movie, onMovieClick }: MovieC
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-105 rounded-[var(--radius-2xl)]"
               sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 20vw"
-              loading="eager"
+              loading="lazy"
               unoptimized
               referrerPolicy="no-referrer"
               onError={() => setImageError(true)}
